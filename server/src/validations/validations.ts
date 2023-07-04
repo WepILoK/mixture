@@ -20,7 +20,7 @@ export const registerValidator = [
         .withMessage('email.invalid')
         .isLength({min: 7, max: 40})
         .withMessage('Допустимое кол-во символов в почте от 7 до 40.'),
-    body('fullName', 'Введите логин')
+    body('username', 'Введите логин')
         .isString()
         .isLength({min: 4, max: 40})
         .withMessage('Допустимое кол-во символов в логине от 4 до 40.'),

@@ -13,7 +13,7 @@ export const UserController = {
 
             const doc = new UserModel({
                 email: req.body.email,
-                fullName: req.body.fullName,
+                username: req.body.username,
                 passwordHash: hash,
                 avatarUrl: req.body.avatarUrl,
             })
