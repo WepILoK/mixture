@@ -1,17 +1,18 @@
 import mongoose from "mongoose";
 
 export interface IUserSchema extends mongoose.Document {
-    _doc?: any
     email: string
-    username: string
+    userName: string
     passwordHash: string
     avatarUrl: string
     themeMode: "light" | "dark"
+    activationLink: string
     timestamps: any
+    isActivated: boolean
 }
 
 const UserSchema = new mongoose.Schema<IUserSchema>({
-    username: {
+    userName: {
         type: String,
         required: true
     },
@@ -28,6 +29,11 @@ const UserSchema = new mongoose.Schema<IUserSchema>({
         type: String,
         default: "light"
     },
+    isActivated: {
+        type: Boolean,
+        default: false
+    },
+    activationLink: String,
     avatarUrl: String
 }, {
     timestamps: true,

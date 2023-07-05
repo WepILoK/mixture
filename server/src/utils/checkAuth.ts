@@ -1,25 +1,20 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import {handleErrors, tokenService} from "./index";
 
 export default async (req: any, res: express.Response, next: express.NextFunction) => {
     const token = (req.headers.authorization || "").replace(/Bearer\s?/, "")
 
     if (!token) {
-        res.status(401).json({
-            status: "error",
-            message: "no_access",
-        })
+        handleErrors.unauthorizedError(res)
         return
     }
     try {
-        const decoded: any = jwt.verify(token, "secretCode")
-        req.userId = decoded._id
+        const userData: any = tokenService.validateAccessToken(token);
+        req.userId = userData._id
         next()
     } catch (err) {
-        res.status(401).json({
-            status: "error",
-            message: "no_access",
-        })
+        handleErrors.unauthorizedError(res)
         return
     }
 }

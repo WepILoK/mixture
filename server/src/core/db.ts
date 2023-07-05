@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 mongoose.Promise = Promise;
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://WepJIoK:123456789w@cluster0.nkfzlbg.mongodb.net/cloud-storage?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://WepJIoK:123456789w@cluster0.nkfzlbg.mongodb.net/mixture?retryWrites=true&w=majority")
 
 const db = mongoose.connection;
 

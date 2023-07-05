@@ -44,19 +44,13 @@ export const registerValidator = [
         }),
 ]
 
-export const postValidator = [
-    body('title', "post.title.required")
+export const todoValidator = [
+    body('todoName', "post.todoName.required")
         .isString()
-        .isLength({min: 3, max: 200})
+        .isLength({min: 3, max: 100})
         .withMessage('min: 3, max: 200'),
-    body('text', "post.text.required")
+    body('description', "post.description.required")
         .isString()
         .isLength({min: 10, max: 400})
-        .withMessage('min: 10, max: 400'),
-    body('imageUrl', "post.imageUrl.invalid")
-        .optional()
-        .isString(),
-    body('tags', "post.tags.isArray")
-        .optional()
-        .isString(),
+        .withMessage('min: 10, max: 400')
 ]
